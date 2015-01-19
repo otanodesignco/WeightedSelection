@@ -1,34 +1,29 @@
 <?php
 
-// port of the python subtraction method from http://eli.thegreenplace.net
 class WeightedSelection
 {
-	protected $weights;
-	protected $weightCount;
+	private $weights;
+	private $weightCount;
+	private $weight_sum;
 	
 	public function __construct( $weights )
 	{
-		if( is_array( $weights ) )
-		{
-			$this->weights = $weights;
-			$this->weightCount = count( $this->weights );
-		}
-		else
-		{
-			throw new InvalidArgumentException( "Weights must be an array" );
-		}
+		
+		$this->weights = $weights;
+		$this->weightCount = count( $this->weights );
+		$this->weight_sum = (int)array_sum( $this->weights );
+		
 	}
 	
-	public function selectWeight( $weights )
+	public function selectWeight()
 	{
-		$rgn = mt_rand() * array_sum( $this->weights );
-		$i = 0;
+		$rgn = mt_rand( 1, $this->weight_sum );
 			
 		for( $i = 0; $i < $this->weightCount; $i++ )
 		{
 			$rgn -= $this->weights[ $i ];
 				
-			if( $rgn < 0 )
+			if( $rgn <= 0 )
 			{
 				return $this->weights[ $i ];
 			}
