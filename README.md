@@ -3,7 +3,4 @@ WeightedSelection
 
 Php implementation of weighted selection
 
-Two classes that handle the same problem differently ported from two different languages.
-This serves as the dice roller for the loot system in the gamification platform.
-The javascript based port expects doubles with the highest number being 1.0 and the lowest 0. It is fixed to 2 points after the decimal.
-So to get a 80% chance you'd put 0.8 and 1% as 0.01 for the javascript port. The comment on top say which language port it is and the site it was taken from.
+Weighted Selection implemented in php. Weighted selection gives you the ability to make a selection based on weight or probability. Each class only accepts integers (floats or doubles not supported at this time). The lowest and highest percents are 1 and 100. Two test files (poorly writen sorry) are here that show metrics based on a sample. Each algorithm performs well but the weightedSelection's subtraction method is the faster of the two. Each give similar metrics on a run for 10,000 times. This will serve as the dice roller for the loot component to the rpg gamification platform. The exception was removed from the constructor and the code simplified and worked so that it will run.
